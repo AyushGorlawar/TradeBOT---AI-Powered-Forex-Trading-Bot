@@ -1,0 +1,144 @@
+2025-07-26 13:26:16,656 - TradeBOT - INFO - Initializing TradeBOT with 1 currency pairs
+2025-07-26 13:26:16,658 - TradeBOT.DataFetcher - ERROR - OANDA API key or account ID not provided
+2025-07-26 13:26:16,658 - TradeBOT.MLModel - WARNING - No saved models found
+2025-07-26 13:26:45,477 - TradeBOT - INFO - Initializing TradeBOT with 1 currency pairs
+2025-07-26 13:26:45,477 - TradeBOT.DataFetcher - ERROR - OANDA API key or account ID not provided
+2025-07-26 13:26:45,478 - TradeBOT.MLModel - WARNING - No saved models found
+2025-07-26 13:26:45,483 - TradeBOT.Visualizer - WARNING - Could not import plotting library: No module named 'mplfinance'. Visualization will be limited.
+2025-07-26 13:27:53,502 - TradeBOT - INFO - Initializing TradeBOT with 1 currency pairs
+2025-07-26 13:27:53,800 - TradeBOT.DataFetcher - ERROR - OANDA API key or account ID not provided
+2025-07-26 13:27:53,802 - TradeBOT.MLModel - WARNING - No saved models found
+2025-07-26 13:27:53,803 - TradeBOT.Visualizer - WARNING - Could not import plotting library: No module named 'mplfinance'. Visualization will be limited.
+2025-07-26 13:27:56,347 - TradeBOT.WebInterface - INFO - Flask app initialized successfully
+2025-07-26 13:27:56,347 - TradeBOT - INFO - TradeBOT initialized in backtest mode with ml strategy
+2025-07-26 13:27:56,348 - TradeBOT - INFO - Starting backtest
+2025-07-26 13:27:56,348 - TradeBOT - INFO - Running backtest for EUR_USD over 30 days
+2025-07-26 13:27:56,349 - TradeBOT - ERROR - Error running backtest for EUR_USD: 'Backtester' object has no attribute 'run'
+2025-07-26 13:27:56,349 - TradeBOT - INFO - Backtest completed
+2025-07-26 13:40:11,289 - TradeBOT - INFO - Initializing TradeBOT with 1 currency pairs
+2025-07-26 13:40:11,289 - TradeBOT.DataFetcher - ERROR - OANDA API key or account ID not provided
+2025-07-26 13:40:11,290 - TradeBOT.MLModel - WARNING - No saved models found
+2025-07-26 13:40:11,291 - TradeBOT.Visualizer - WARNING - Could not import plotting library: No module named 'mplfinance'. Visualization will be limited.
+2025-07-26 13:40:12,708 - TradeBOT.WebInterface - INFO - Flask app initialized successfully
+2025-07-26 13:40:12,709 - TradeBOT - INFO - TradeBOT initialized in backtest mode with ml strategy
+2025-07-26 13:40:12,709 - TradeBOT - INFO - Starting backtest
+2025-07-26 13:40:12,709 - TradeBOT - INFO - Running backtest for EUR_USD over 30 days
+2025-07-26 13:40:12,711 - TradeBOT - ERROR - Error running backtest for EUR_USD: name 'timedelta' is not defined
+2025-07-26 13:40:12,711 - TradeBOT - INFO - Backtest completed
+2025-07-26 13:40:31,705 - TradeBOT - INFO - Initializing TradeBOT with 1 currency pairs
+2025-07-26 13:40:31,706 - TradeBOT.DataFetcher - ERROR - OANDA API key or account ID not provided
+2025-07-26 13:40:31,707 - TradeBOT.MLModel - WARNING - No saved models found
+2025-07-26 13:40:31,708 - TradeBOT.Visualizer - WARNING - Could not import plotting library: No module named 'mplfinance'. Visualization will be limited.
+2025-07-26 13:40:32,607 - TradeBOT.WebInterface - INFO - Flask app initialized successfully
+2025-07-26 13:40:32,607 - TradeBOT - INFO - TradeBOT initialized in backtest mode with ml strategy
+2025-07-26 13:40:32,608 - TradeBOT - INFO - Starting backtest
+2025-07-26 13:40:32,608 - TradeBOT - INFO - Running backtest for EUR_USD over 30 days
+2025-07-26 13:40:32,608 - TradeBOT.Backtester - INFO - Starting backtest from 2025-06-26 to 2025-07-26 on 1 pairs
+2025-07-26 13:40:32,614 - TradeBOT.Backtester - INFO - Backtesting EUR_USD from 2025-06-26 to 2025-07-26
+2025-07-26 13:40:32,614 - TradeBOT.Backtester - ERROR - Error fetching data for EUR_USD: DataFetcher.get_historical_data() takes from 2 to 4 positional arguments but 5 were given
+2025-07-26 13:40:32,616 - TradeBOT.Backtester - INFO - Backtest completed. Results saved to backtest_results\backtest_20250726_134032.json
+2025-07-26 13:40:32,617 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 13:40:32,618 - TradeBOT - ERROR - Error running backtest for EUR_USD: 'Backtester' object has no attribute 'generate_report'
+2025-07-26 13:40:32,618 - TradeBOT - INFO - Backtest completed
+2025-07-26 13:41:25,451 - TradeBOT - INFO - Initializing TradeBOT with 1 currency pairs
+2025-07-26 13:41:25,452 - TradeBOT.DataFetcher - ERROR - OANDA API key or account ID not provided
+2025-07-26 13:41:25,452 - TradeBOT.MLModel - WARNING - No saved models found
+2025-07-26 13:41:25,453 - TradeBOT.Visualizer - WARNING - Could not import plotting library: No module named 'mplfinance'. Visualization will be limited.
+2025-07-26 13:41:26,435 - TradeBOT.WebInterface - INFO - Flask app initialized successfully
+2025-07-26 13:41:26,435 - TradeBOT - INFO - TradeBOT initialized in backtest mode with ml strategy
+2025-07-26 13:41:26,435 - TradeBOT - INFO - Starting backtest
+2025-07-26 13:41:26,435 - TradeBOT - INFO - Running backtest for EUR_USD over 30 days
+2025-07-26 13:41:26,436 - TradeBOT.Backtester - INFO - Starting backtest from 2025-06-26 to 2025-07-26 on 1 pairs
+2025-07-26 13:41:26,438 - TradeBOT.Backtester - INFO - Backtesting EUR_USD from 2025-06-26 to 2025-07-26
+2025-07-26 13:41:26,439 - TradeBOT.DataFetcher - ERROR - Error fetching OANDA historical data for EUR_USD: 'DataFetcher' object has no attribute 'oanda_client'
+2025-07-26 13:41:26,448 - TradeBOT.Backtester - WARNING - No data available for EUR_USD in the specified date range
+2025-07-26 13:41:26,451 - TradeBOT.Backtester - INFO - Backtest completed. Results saved to backtest_results\backtest_20250726_134126.json
+2025-07-26 13:41:26,451 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 13:41:28,267 - TradeBOT.Backtester - INFO - Equity curve saved to backtest_results\reports\EUR_USD_1h_ml_20250726_134126.png
+2025-07-26 13:41:28,267 - TradeBOT - ERROR - Error running backtest for EUR_USD: 'Visualizer' object has no attribute 'plot_equity_curve'
+2025-07-26 13:41:28,267 - TradeBOT - INFO - Backtest completed
+2025-07-26 13:42:14,503 - TradeBOT - INFO - Initializing TradeBOT with 1 currency pairs
+2025-07-26 13:42:14,503 - TradeBOT.DataFetcher - ERROR - OANDA API key or account ID not provided
+2025-07-26 13:42:14,506 - TradeBOT.MLModel - WARNING - No saved models found
+2025-07-26 13:42:14,509 - TradeBOT.Visualizer - WARNING - Could not import plotting library: No module named 'mplfinance'. Visualization will be limited.
+2025-07-26 13:42:15,573 - TradeBOT.WebInterface - INFO - Flask app initialized successfully
+2025-07-26 13:42:15,574 - TradeBOT - INFO - TradeBOT initialized in backtest mode with ml strategy
+2025-07-26 13:42:15,574 - TradeBOT - INFO - Starting backtest
+2025-07-26 13:42:15,574 - TradeBOT - INFO - Running backtest for EUR_USD over 30 days
+2025-07-26 13:42:15,575 - TradeBOT.Backtester - INFO - Starting backtest from 2025-06-26 to 2025-07-26 on 1 pairs
+2025-07-26 13:42:15,577 - TradeBOT.Backtester - INFO - Backtesting EUR_USD from 2025-06-26 to 2025-07-26
+2025-07-26 13:42:15,577 - TradeBOT.DataFetcher - ERROR - Error fetching OANDA historical data for EUR_USD: 'DataFetcher' object has no attribute 'oanda_client'
+2025-07-26 13:42:15,580 - TradeBOT.Backtester - WARNING - No data available for EUR_USD in the specified date range
+2025-07-26 13:42:15,582 - TradeBOT.Backtester - INFO - Backtest completed. Results saved to backtest_results\backtest_20250726_134215.json
+2025-07-26 13:42:15,582 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 13:42:16,455 - TradeBOT.Backtester - INFO - Equity curve saved to backtest_results\reports\EUR_USD_1h_ml_20250726_134215.png
+2025-07-26 13:42:16,456 - TradeBOT - ERROR - Error running backtest for EUR_USD: 'Visualizer' object has no attribute 'plot_equity_curve'
+2025-07-26 13:42:16,456 - TradeBOT - INFO - Backtest completed
+2025-07-26 13:42:51,027 - TradeBOT - INFO - Initializing TradeBOT with 1 currency pairs
+2025-07-26 13:42:51,027 - TradeBOT.DataFetcher - ERROR - OANDA API key or account ID not provided
+2025-07-26 13:42:51,028 - TradeBOT.MLModel - WARNING - No saved models found
+2025-07-26 13:42:51,029 - TradeBOT.Visualizer - WARNING - Could not import plotting library: No module named 'mplfinance'. Visualization will be limited.
+2025-07-26 13:42:51,957 - TradeBOT.WebInterface - INFO - Flask app initialized successfully
+2025-07-26 13:42:51,957 - TradeBOT - INFO - TradeBOT initialized in backtest mode with ml strategy
+2025-07-26 13:42:51,957 - TradeBOT - INFO - Starting backtest
+2025-07-26 13:42:51,958 - TradeBOT - INFO - Running backtest for EUR_USD over 30 days
+2025-07-26 13:42:51,958 - TradeBOT.Backtester - INFO - Starting backtest from 2025-06-26 to 2025-07-26 on 1 pairs
+2025-07-26 13:42:51,960 - TradeBOT.Backtester - INFO - Backtesting EUR_USD from 2025-06-26 to 2025-07-26
+2025-07-26 13:42:51,961 - TradeBOT.DataFetcher - ERROR - Error fetching OANDA historical data for EUR_USD: 'DataFetcher' object has no attribute 'oanda_client'
+2025-07-26 13:42:51,963 - TradeBOT.Backtester - WARNING - No data available for EUR_USD in the specified date range
+2025-07-26 13:42:52,261 - TradeBOT.Backtester - INFO - Backtest completed. Results saved to backtest_results\backtest_20250726_134251.json
+2025-07-26 13:42:52,263 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 13:42:52,274 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 13:42:52,276 - TradeBOT - ERROR - Error running backtest for EUR_USD: 'Visualizer' object has no attribute 'plot_equity_curve'
+2025-07-26 13:42:52,278 - TradeBOT - INFO - Backtest completed
+2025-07-26 13:44:15,945 - TradeBOT - INFO - Initializing TradeBOT with 1 currency pairs
+2025-07-26 13:44:15,945 - TradeBOT.DataFetcher - ERROR - OANDA API key or account ID not provided
+2025-07-26 13:44:15,946 - TradeBOT.MLModel - WARNING - No saved models found
+2025-07-26 13:44:15,948 - TradeBOT.Visualizer - WARNING - Could not import plotting library: No module named 'mplfinance'. Visualization will be limited.
+2025-07-26 13:44:16,882 - TradeBOT.WebInterface - INFO - Flask app initialized successfully
+2025-07-26 13:44:16,882 - TradeBOT - INFO - TradeBOT initialized in backtest mode with ml strategy
+2025-07-26 13:44:16,882 - TradeBOT - INFO - Starting backtest
+2025-07-26 13:44:16,883 - TradeBOT - INFO - Running backtest for EUR_USD over 30 days
+2025-07-26 13:44:16,883 - TradeBOT.Backtester - INFO - Starting backtest from 2025-06-26 to 2025-07-26 on 1 pairs
+2025-07-26 13:44:16,885 - TradeBOT.Backtester - INFO - Backtesting EUR_USD from 2025-06-26 to 2025-07-26
+2025-07-26 13:44:16,886 - TradeBOT.DataFetcher - ERROR - Error fetching OANDA historical data for EUR_USD: 'DataFetcher' object has no attribute 'oanda_client'
+2025-07-26 13:44:16,888 - TradeBOT.Backtester - WARNING - No data available for EUR_USD in the specified date range
+2025-07-26 13:44:16,890 - TradeBOT.Backtester - INFO - Backtest completed. Results saved to backtest_results\backtest_20250726_134416.json
+2025-07-26 13:44:16,890 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 13:44:16,892 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 13:44:16,893 - TradeBOT - ERROR - Error running backtest for EUR_USD: Visualizer.create_performance_chart() got an unexpected keyword argument 'title'
+2025-07-26 13:44:16,893 - TradeBOT - INFO - Backtest completed
+2025-07-26 15:26:07,373 - TradeBOT - INFO - Initializing TradeBOT with 1 currency pairs
+2025-07-26 15:26:07,375 - TradeBOT.DataFetcher - ERROR - OANDA API key or account ID not provided
+2025-07-26 15:26:07,376 - TradeBOT.MLModel - WARNING - No saved models found
+2025-07-26 15:26:07,378 - TradeBOT.Visualizer - WARNING - Could not import plotting library: No module named 'mplfinance'. Visualization will be limited.
+2025-07-26 15:26:10,774 - TradeBOT.WebInterface - INFO - Flask app initialized successfully
+2025-07-26 15:26:10,774 - TradeBOT - INFO - TradeBOT initialized in backtest mode with ml strategy
+2025-07-26 15:26:10,776 - TradeBOT - INFO - Starting backtest
+2025-07-26 15:26:10,776 - TradeBOT - INFO - Running backtest for EUR_USD over 30 days
+2025-07-26 15:26:10,776 - TradeBOT.Backtester - INFO - Starting backtest from 2025-06-26 to 2025-07-26 on 1 pairs
+2025-07-26 15:26:10,783 - TradeBOT.Backtester - INFO - Backtesting EUR_USD from 2025-06-26 to 2025-07-26
+2025-07-26 15:26:10,790 - TradeBOT.DataFetcher - ERROR - Error fetching OANDA historical data for EUR_USD: 'DataFetcher' object has no attribute 'oanda_client'
+2025-07-26 15:26:10,802 - TradeBOT.Backtester - WARNING - No data available for EUR_USD in the specified date range
+2025-07-26 15:26:10,804 - TradeBOT.Backtester - INFO - Backtest completed. Results saved to backtest_results\backtest_20250726_152610.json
+2025-07-26 15:26:10,804 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 15:26:10,806 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 15:26:10,806 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 15:26:10,806 - TradeBOT - INFO - Backtest completed
+2025-07-26 15:30:06,365 - TradeBOT - INFO - Initializing TradeBOT with 1 currency pairs
+2025-07-26 15:30:06,365 - TradeBOT.DataFetcher - ERROR - OANDA API key or account ID not provided
+2025-07-26 15:30:06,366 - TradeBOT.MLModel - WARNING - No saved models found
+2025-07-26 15:30:06,367 - TradeBOT.Visualizer - WARNING - Could not import plotting library: No module named 'mplfinance'. Visualization will be limited.
+2025-07-26 15:30:07,308 - TradeBOT.WebInterface - INFO - Flask app initialized successfully
+2025-07-26 15:30:07,308 - TradeBOT - INFO - TradeBOT initialized in backtest mode with ml strategy
+2025-07-26 15:30:07,308 - TradeBOT - INFO - Starting backtest
+2025-07-26 15:30:07,308 - TradeBOT - INFO - Running backtest for EUR_USD over 30 days
+2025-07-26 15:30:07,308 - TradeBOT.Backtester - INFO - Starting backtest from 2025-06-26 to 2025-07-26 on 1 pairs
+2025-07-26 15:30:07,311 - TradeBOT.Backtester - INFO - Backtesting EUR_USD from 2025-06-26 to 2025-07-26
+2025-07-26 15:30:07,311 - TradeBOT.DataFetcher - ERROR - Error fetching OANDA historical data for EUR_USD: 'DataFetcher' object has no attribute 'oanda_client'
+2025-07-26 15:30:07,314 - TradeBOT.Backtester - WARNING - No data available for EUR_USD in the specified date range
+2025-07-26 15:30:07,315 - TradeBOT.Backtester - INFO - Backtest completed. Results saved to backtest_results\backtest_20250726_153007.json
+2025-07-26 15:30:07,316 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 15:30:07,318 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 15:30:07,318 - TradeBOT.Visualizer - WARNING - No plotting library available
+2025-07-26 15:30:07,319 - TradeBOT - INFO - Backtest completed
