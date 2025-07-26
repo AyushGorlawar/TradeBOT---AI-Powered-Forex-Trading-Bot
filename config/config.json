@@ -1,0 +1,124 @@
+{
+    "app_name": "TradeBOT",
+    "version": "1.0.0",
+    "log_level": "INFO",
+    "loop_interval": 60,
+    "buffer_size": 100,
+    "min_buffer_size": 30,
+    
+    "default_timeframe": "1h",
+    "historical_days": 30,
+    
+    "default_mode": "paper",
+    "max_open_positions": 5,
+    "default_leverage": 1,
+    
+    "risk_management": {
+        "risk_per_trade": 0.02,
+        "max_risk_per_day": 0.06,
+        "default_stop_loss": 0.02,
+        "default_take_profit": 0.04,
+        "trailing_stop": true,
+        "trailing_stop_activation": 0.01,
+        "trailing_stop_distance": 0.01,
+        "max_risk_per_trade": 0.02,
+        "max_open_positions": 5,
+        "max_risk_per_pair": 0.05,
+        "max_daily_drawdown": 0.05,
+        "initial_balance": 10000.0,
+        "daily_reset_time": "00:00:00",
+        "max_position_size": 100000,
+        "min_position_size": 1000,
+        "lot_size": 1000
+    },
+    
+    "indicators": {
+        "rsi": {
+            "enabled": true,
+            "period": 14,
+            "overbought": 70,
+            "oversold": 30
+        },
+        "macd": {
+            "enabled": true,
+            "fast_period": 12,
+            "slow_period": 26,
+            "signal_period": 9
+        },
+        "bollinger_bands": {
+            "enabled": true,
+            "period": 20,
+            "std_dev": 2
+        },
+        "moving_averages": {
+            "enabled": true,
+            "periods": [20, 50, 200]
+        },
+        "stochastic": {
+            "enabled": true,
+            "k_period": 14,
+            "d_period": 3,
+            "slowing": 3,
+            "overbought": 80,
+            "oversold": 20
+        }
+    },
+    
+    "ml_model": {
+        "model_type": "random_forest",
+        "model_params": {
+            "n_estimators": 100,
+            "max_depth": 10,
+            "min_samples_split": 2,
+            "min_samples_leaf": 1
+        },
+        "feature_columns": [
+            "rsi", "macd", "macd_signal", "macd_hist", 
+            "bb_upper", "bb_middle", "bb_lower", "bb_width",
+            "ma_20", "ma_50", "ma_200",
+            "stoch_k", "stoch_d"
+        ],
+        "target_column": "signal",
+        "prediction_horizon": 5,
+        "train_size": 0.8,
+        "random_state": 42,
+        "models_dir": "models",
+        "prediction_threshold": 0.65,
+        "retrain_interval_days": 7,
+        "enable_hyperparameter_tuning": true,
+        "cross_validation_folds": 5
+    },
+    
+    "web_interface": {
+        "enabled": true,
+        "host": "127.0.0.1",
+        "port": 5000,
+        "debug": false,
+        "secret_key": "tradebot_secret_key",
+        "data_dir": "web_data",
+        "update_interval": 60
+    },
+    
+    "backtest": {
+        "days": 30,
+        "initial_balance": 10000,
+        "commission": 0.0001,
+        "slippage": 0.0001
+    },
+    
+    "oanda": {
+        "api_key": "",
+        "account_id": "",
+        "base_url": "https://api-fxpractice.oanda.com"
+    },
+    
+    "fxcm": {
+        "api_key": "",
+        "account_id": "",
+        "environment": "demo"
+    },
+    
+    "alphavantage": {
+        "api_key": ""
+    }
+}
