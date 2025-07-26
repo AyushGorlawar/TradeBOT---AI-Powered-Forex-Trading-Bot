@@ -1,0 +1,33 @@
+{
+    "config": {
+        "pairs": [
+            "EUR_USD"
+        ],
+        "start_date": "2025-06-26",
+        "end_date": "2025-07-26",
+        "timeframe": "1h",
+        "initial_balance": 10000,
+        "commission": 0.0001,
+        "slippage": 0.0001,
+        "leverage": 1
+    },
+    "performance": {
+        "total_trades": 0,
+        "winning_trades": 0,
+        "losing_trades": 0,
+        "win_rate": 0,
+        "profit_factor": 0,
+        "total_pnl": 0,
+        "max_drawdown": 0,
+        "max_drawdown_pct": 0,
+        "sharpe_ratio": 0,
+        "average_trade": 0,
+        "average_winner": 0,
+        "average_loser": 0,
+        "largest_winner": 0,
+        "largest_loser": 0,
+        "final_balance": 10000,
+        "return_pct": 0
+    },
+    "trades": []
+}
