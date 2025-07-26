@@ -1,0 +1,582 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - Forex Trading Bot{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-cog me-2"></i>Bot Settings
+                </h5>
+            </div>
+            <div class="card-body">
+                <ul class="nav nav-tabs" id="settingsTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="true">General</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="trading-tab" data-bs-toggle="tab" data-bs-target="#trading" type="button" role="tab" aria-controls="trading" aria-selected="false">Trading</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="risk-tab" data-bs-toggle="tab" data-bs-target="#risk" type="button" role="tab" aria-controls="risk" aria-selected="false">Risk Management</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="indicators-tab" data-bs-toggle="tab" data-bs-target="#indicators" type="button" role="tab" aria-controls="indicators" aria-selected="false">Indicators</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="ml-tab" data-bs-toggle="tab" data-bs-target="#ml" type="button" role="tab" aria-controls="ml" aria-selected="false">Machine Learning</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="api-tab" data-bs-toggle="tab" data-bs-target="#api" type="button" role="tab" aria-controls="api" aria-selected="false">API Credentials</button>
+                    </li>
+                </ul>
+                
+                <div class="tab-content p-3" id="settingsTabsContent">
+                    <!-- General Settings -->
+                    <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
+                        <form id="general-settings-form">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="bot-name" class="form-label">Bot Name</label>
+                                    <input type="text" class="form-control" id="bot-name" value="Forex Trading Bot">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="log-level" class="form-label">Log Level</label>
+                                    <select class="form-select" id="log-level">
+                                        <option value="DEBUG">Debug</option>
+                                        <option value="INFO" selected>Info</option>
+                                        <option value="WARNING">Warning</option>
+                                        <option value="ERROR">Error</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="data-directory" class="form-label">Data Directory</label>
+                                    <input type="text" class="form-control" id="data-directory" value="./data">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="timezone" class="form-label">Timezone</label>
+                                    <select class="form-select" id="timezone">
+                                        <option value="UTC" selected>UTC</option>
+                                        <option value="America/New_York">America/New_York</option>
+                                        <option value="Europe/London">Europe/London</option>
+                                        <option value="Asia/Tokyo">Asia/Tokyo</option>
+                                        <option value="Australia/Sydney">Australia/Sydney</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="enable-web-interface" checked>
+                                        <label class="form-check-label" for="enable-web-interface">Enable Web Interface</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="enable-notifications" checked>
+                                        <label class="form-check-label" for="enable-notifications">Enable Notifications</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="web-port" class="form-label">Web Interface Port</label>
+                                    <input type="number" class="form-control" id="web-port" value="5000">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="notification-email" class="form-label">Notification Email</label>
+                                    <input type="email" class="form-control" id="notification-email" placeholder="your@email.com">
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save General Settings</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Trading Settings -->
+                    <div class="tab-pane fade" id="trading" role="tabpanel" aria-labelledby="trading-tab">
+                        <form id="trading-settings-form">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="trading-mode" class="form-label">Trading Mode</label>
+                                    <select class="form-select" id="trading-mode">
+                                        <option value="paper">Paper Trading</option>
+                                        <option value="live">Live Trading</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="trading-platform" class="form-label">Trading Platform</label>
+                                    <select class="form-select" id="trading-platform">
+                                        <option value="oanda" selected>Oanda</option>
+                                        <option value="fxcm">FXCM</option>
+                                        <option value="ig">IG</option>
+                                        <option value="paper">Paper Trading</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="default-lot-size" class="form-label">Default Lot Size</label>
+                                    <input type="number" class="form-control" id="default-lot-size" value="0.01" step="0.01">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="max-open-positions" class="form-label">Max Open Positions</label>
+                                    <input type="number" class="form-control" id="max-open-positions" value="10">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="default-slippage" class="form-label">Default Slippage (pips)</label>
+                                    <input type="number" class="form-control" id="default-slippage" value="1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="default-spread" class="form-label">Default Spread (pips)</label>
+                                    <input type="number" class="form-control" id="default-spread" value="2">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="enable-trading" checked>
+                                        <label class="form-check-label" for="enable-trading">Enable Trading</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <label class="form-label">Trading Hours</label>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text">Start Time</span>
+                                                <input type="time" class="form-control" id="trading-start-time" value="00:00">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group mb-2">
+                                                <span class="input-group-text">End Time</span>
+                                                <input type="time" class="form-control" id="trading-end-time" value="23:59">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <label class="form-label">Trading Days</label>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="trading-monday" checked>
+                                            <label class="form-check-label" for="trading-monday">Monday</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="trading-tuesday" checked>
+                                            <label class="form-check-label" for="trading-tuesday">Tuesday</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="trading-wednesday" checked>
+                                            <label class="form-check-label" for="trading-wednesday">Wednesday</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="trading-thursday" checked>
+                                            <label class="form-check-label" for="trading-thursday">Thursday</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="trading-friday" checked>
+                                            <label class="form-check-label" for="trading-friday">Friday</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="trading-saturday">
+                                            <label class="form-check-label" for="trading-saturday">Saturday</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="trading-sunday">
+                                            <label class="form-check-label" for="trading-sunday">Sunday</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save Trading Settings</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Risk Management Settings -->
+                    <div class="tab-pane fade" id="risk" role="tabpanel" aria-labelledby="risk-tab">
+                        <form id="risk-settings-form">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="risk-per-trade" class="form-label">Risk Per Trade (%)</label>
+                                    <input type="number" class="form-control" id="risk-per-trade" value="1" min="0.1" max="10" step="0.1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="max-daily-risk" class="form-label">Max Daily Risk (%)</label>
+                                    <input type="number" class="form-control" id="max-daily-risk" value="5" min="1" max="20" step="0.5">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="stop-loss-type" class="form-label">Stop Loss Type</label>
+                                    <select class="form-select" id="stop-loss-type">
+                                        <option value="fixed">Fixed (pips)</option>
+                                        <option value="percent">Percentage</option>
+                                        <option value="atr" selected>ATR Multiple</option>
+                                        <option value="support">Support/Resistance</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="stop-loss-value" class="form-label">Stop Loss Value</label>
+                                    <input type="number" class="form-control" id="stop-loss-value" value="2" step="0.1">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="take-profit-type" class="form-label">Take Profit Type</label>
+                                    <select class="form-select" id="take-profit-type">
+                                        <option value="fixed">Fixed (pips)</option>
+                                        <option value="percent">Percentage</option>
+                                        <option value="atr">ATR Multiple</option>
+                                        <option value="resistance" selected>Support/Resistance</option>
+                                        <option value="rr">Risk-Reward Ratio</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="take-profit-value" class="form-label">Take Profit Value</label>
+                                    <input type="number" class="form-control" id="take-profit-value" value="2" step="0.1">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="trailing-stop" class="form-label">Trailing Stop (pips)</label>
+                                    <input type="number" class="form-control" id="trailing-stop" value="0" step="1">
+                                    <div class="form-text">Set to 0 to disable trailing stop</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="break-even-pips" class="form-label">Break Even (pips)</label>
+                                    <input type="number" class="form-control" id="break-even-pips" value="0" step="1">
+                                    <div class="form-text">Set to 0 to disable break even</div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="max-drawdown" class="form-label">Max Drawdown (%)</label>
+                                    <input type="number" class="form-control" id="max-drawdown" value="20" min="5" max="50" step="1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="position-sizing" class="form-label">Position Sizing Method</label>
+                                    <select class="form-select" id="position-sizing">
+                                        <option value="fixed">Fixed Lot</option>
+                                        <option value="risk" selected>Risk-Based</option>
+                                        <option value="equity">Equity Percentage</option>
+                                        <option value="martingale">Martingale</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save Risk Settings</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Indicators Settings -->
+                    <div class="tab-pane fade" id="indicators" role="tabpanel" aria-labelledby="indicators-tab">
+                        <form id="indicators-settings-form">
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h5>Moving Averages</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="sma-periods" class="form-label">SMA Periods</label>
+                                            <input type="text" class="form-control" id="sma-periods" value="20,50,200">
+                                            <div class="form-text">Comma-separated list of periods</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="ema-periods" class="form-label">EMA Periods</label>
+                                            <input type="text" class="form-control" id="ema-periods" value="9,21,55">
+                                            <div class="form-text">Comma-separated list of periods</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h5>Oscillators</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="rsi-period" class="form-label">RSI Period</label>
+                                            <input type="number" class="form-control" id="rsi-period" value="14">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="rsi-overbought" class="form-label">RSI Overbought</label>
+                                            <input type="number" class="form-control" id="rsi-overbought" value="70">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="rsi-oversold" class="form-label">RSI Oversold</label>
+                                            <input type="number" class="form-control" id="rsi-oversold" value="30">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="stoch-k-period" class="form-label">Stochastic K Period</label>
+                                            <input type="number" class="form-control" id="stoch-k-period" value="14">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="stoch-d-period" class="form-label">Stochastic D Period</label>
+                                            <input type="number" class="form-control" id="stoch-d-period" value="3">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="stoch-slowing" class="form-label">Stochastic Slowing</label>
+                                            <input type="number" class="form-control" id="stoch-slowing" value="3">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h5>MACD</h5>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <label for="macd-fast" class="form-label">MACD Fast Period</label>
+                                            <input type="number" class="form-control" id="macd-fast" value="12">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="macd-slow" class="form-label">MACD Slow Period</label>
+                                            <input type="number" class="form-control" id="macd-slow" value="26">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="macd-signal" class="form-label">MACD Signal Period</label>
+                                            <input type="number" class="form-control" id="macd-signal" value="9">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h5>Bollinger Bands</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="bb-period" class="form-label">BB Period</label>
+                                            <input type="number" class="form-control" id="bb-period" value="20">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="bb-std" class="form-label">BB Standard Deviation</label>
+                                            <input type="number" class="form-control" id="bb-std" value="2" step="0.1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h5>Other Indicators</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="atr-period" class="form-label">ATR Period</label>
+                                            <input type="number" class="form-control" id="atr-period" value="14">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="adx-period" class="form-label">ADX Period</label>
+                                            <input type="number" class="form-control" id="adx-period" value="14">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="adx-threshold" class="form-label">ADX Threshold</label>
+                                            <input type="number" class="form-control" id="adx-threshold" value="25">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save Indicator Settings</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Machine Learning Settings -->
+                    <div class="tab-pane fade" id="ml" role="tabpanel" aria-labelledby="ml-tab">
+                        <form id="ml-settings-form">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="ml-model-type" class="form-label">Model Type</label>
+                                    <select class="form-select" id="ml-model-type">
+                                        <option value="random_forest" selected>Random Forest</option>
+                                        <option value="xgboost">XGBoost</option>
+                                        <option value="neural_network">Neural Network</option>
+                                        <option value="svm">SVM</option>
+                                        <option value="ensemble">Ensemble</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="prediction-horizon" class="form-label">Prediction Horizon (bars)</label>
+                                    <input type="number" class="form-control" id="prediction-horizon" value="5">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="training-period" class="form-label">Training Period (days)</label>
+                                    <input type="number" class="form-control" id="training-period" value="90">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="retraining-interval" class="form-label">Retraining Interval (days)</label>
+                                    <input type="number" class="form-control" id="retraining-interval" value="7">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="feature-selection" class="form-label">Feature Selection Method</label>
+                                    <select class="form-select" id="feature-selection">
+                                        <option value="none">None</option>
+                                        <option value="pca">PCA</option>
+                                        <option value="rfe" selected>Recursive Feature Elimination</option>
+                                        <option value="importance">Feature Importance</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="validation-method" class="form-label">Validation Method</label>
+                                    <select class="form-select" id="validation-method">
+                                        <option value="train_test">Train-Test Split</option>
+                                        <option value="cross_val" selected>Cross-Validation</option>
+                                        <option value="time_series">Time Series Split</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="prediction-threshold" class="form-label">Prediction Threshold</label>
+                                    <input type="number" class="form-control" id="prediction-threshold" value="0.6" min="0.5" max="0.95" step="0.05">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="ml-signal-weight" class="form-label">ML Signal Weight (%)</label>
+                                    <input type="number" class="form-control" id="ml-signal-weight" value="50" min="0" max="100" step="5">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="enable-ml" checked>
+                                        <label class="form-check-label" for="enable-ml">Enable Machine Learning</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save ML Settings</button>
+                            <button type="button" id="train-model-btn" class="btn btn-success ms-2">
+                                <i class="fas fa-brain me-1"></i> Train Model Now
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- API Credentials Settings -->
+                    <div class="tab-pane fade" id="api" role="tabpanel" aria-labelledby="api-tab">
+                        <form id="api-settings-form">
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h5>Oanda API</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="oanda-api-key" class="form-label">API Key</label>
+                                            <input type="password" class="form-control" id="oanda-api-key">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="oanda-account-id" class="form-label">Account ID</label>
+                                            <input type="text" class="form-control" id="oanda-account-id">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="oanda-environment" class="form-label">Environment</label>
+                                            <select class="form-select" id="oanda-environment">
+                                                <option value="practice" selected>Practice</option>
+                                                <option value="live">Live</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 d-flex align-items-end">
+                                            <button type="button" id="test-oanda-btn" class="btn btn-outline-primary">
+                                                <i class="fas fa-vial me-1"></i> Test Connection
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h5>FXCM API</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="fxcm-api-key" class="form-label">API Key</label>
+                                            <input type="password" class="form-control" id="fxcm-api-key">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="fxcm-account-id" class="form-label">Account ID</label>
+                                            <input type="text" class="form-control" id="fxcm-account-id">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="fxcm-environment" class="form-label">Environment</label>
+                                            <select class="form-select" id="fxcm-environment">
+                                                <option value="demo" selected>Demo</option>
+                                                <option value="real">Real</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6 d-flex align-items-end">
+                                            <button type="button" id="test-fxcm-btn" class="btn btn-outline-primary">
+                                                <i class="fas fa-vial me-1"></i> Test Connection
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <h5>Alpha Vantage API (Market Data)</h5>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="alphavantage-api-key" class="form-label">API Key</label>
+                                            <input type="password" class="form-control" id="alphavantage-api-key">
+                                        </div>
+                                        <div class="col-md-6 d-flex align-items-end">
+                                            <button type="button" id="test-alphavantage-btn" class="btn btn-outline-primary">
+                                                <i class="fas fa-vial me-1"></i> Test Connection
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Save API Settings</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/settings.js') }}"></script>
+{% endblock %}

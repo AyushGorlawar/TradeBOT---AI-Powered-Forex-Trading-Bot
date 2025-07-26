@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Forex Trading Bot{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Account Summary -->
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-wallet me-2"></i>Account Summary
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="account-info">
+                    <div class="row mb-3">
+                        <div class="col-7">Balance:</div>
+                        <div class="col-5 text-end" id="account-balance">$0.00</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-7">Equity:</div>
+                        <div class="col-5 text-end" id="account-equity">$0.00</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-7">Open P/L:</div>
+                        <div class="col-5 text-end" id="open-pl">$0.00</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-7">Today's P/L:</div>
+                        <div class="col-5 text-end" id="daily-pl">$0.00</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-7">Total P/L:</div>
+                        <div class="col-5 text-end" id="total-pl">$0.00</div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-7">Margin Used:</div>
+                        <div class="col-5 text-end" id="margin-used">$0.00</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-7">Margin Level:</div>
+                        <div class="col-5 text-end" id="margin-level">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Performance Chart -->
+    <div class="col-md-8 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-chart-line me-2"></i>Performance
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="btn-group btn-group-sm mb-3" role="group">
+                    <button type="button" class="btn btn-outline-primary active" data-period="day">Day</button>
+                    <button type="button" class="btn btn-outline-primary" data-period="week">Week</button>
+                    <button type="button" class="btn btn-outline-primary" data-period="month">Month</button>
+                    <button type="button" class="btn btn-outline-primary" data-period="year">Year</button>
+                    <button type="button" class="btn btn-outline-primary" data-period="all">All</button>
+                </div>
+                <div class="chart-container" style="position: relative; height: 300px;">
+                    <canvas id="performance-chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Open Positions -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-exchange-alt me-2"></i>Open Positions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Pair</th>
+                                <th>Type</th>
+                                <th>Size</th>
+                                <th>Entry</th>
+                                <th>Current</th>
+                                <th>P/L</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="open-positions-table">
+                            <tr>
+                                <td colspan="7" class="text-center">No open positions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Signals -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-bell me-2"></i>Recent Signals
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Pair</th>
+                                <th>Timeframe</th>
+                                <th>Signal</th>
+                                <th>Strength</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="signals-table">
+                            <tr>
+                                <td colspan="6" class="text-center">No recent signals</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Trading Statistics -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-calculator me-2"></i>Trading Statistics
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="stat-card mb-3">
+                            <div class="stat-title">Win Rate</div>
+                            <div class="stat-value" id="win-rate">0%</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="stat-card mb-3">
+                            <div class="stat-title">Profit Factor</div>
+                            <div class="stat-value" id="profit-factor">0.00</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="stat-card mb-3">
+                            <div class="stat-title">Avg. Win</div>
+                            <div class="stat-value" id="avg-win">$0.00</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="stat-card mb-3">
+                            <div class="stat-title">Avg. Loss</div>
+                            <div class="stat-value" id="avg-loss">$0.00</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="stat-card mb-3">
+                            <div class="stat-title">Max Drawdown</div>
+                            <div class="stat-value" id="max-drawdown">0%</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="stat-card mb-3">
+                            <div class="stat-title">Sharpe Ratio</div>
+                            <div class="stat-value" id="sharpe-ratio">0.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Trades -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-history me-2"></i>Recent Trades
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Pair</th>
+                                <th>Type</th>
+                                <th>Size</th>
+                                <th>P/L</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-trades-table">
+                            <tr>
+                                <td colspan="6" class="text-center">No recent trades</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

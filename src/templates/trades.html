@@ -1,0 +1,275 @@
+{% extends "base.html" %}
+
+{% block title %}Trades - Forex Trading Bot{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Open Positions -->
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-exchange-alt me-2"></i>Open Positions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Open Time</th>
+                                <th>Pair</th>
+                                <th>Type</th>
+                                <th>Size</th>
+                                <th>Entry</th>
+                                <th>Current</th>
+                                <th>SL</th>
+                                <th>TP</th>
+                                <th>Swap</th>
+                                <th>P/L</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="open-positions-full-table">
+                            <tr>
+                                <td colspan="12" class="text-center">No open positions</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trade History -->
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0">
+                    <i class="fas fa-history me-2"></i>Trade History
+                </h5>
+                <div>
+                    <button id="export-trades-btn" class="btn btn-sm btn-light me-2">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                    <button id="refresh-trades-btn" class="btn btn-sm btn-light">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <form id="trade-filter-form" class="row g-3">
+                            <div class="col-md-2">
+                                <label for="pair-filter" class="form-label">Currency Pair</label>
+                                <select id="pair-filter" class="form-select">
+                                    <option value="">All Pairs</option>
+                                    <option value="EUR_USD">EUR/USD</option>
+                                    <option value="GBP_USD">GBP/USD</option>
+                                    <option value="USD_JPY">USD/JPY</option>
+                                    <option value="USD_CHF">USD/CHF</option>
+                                    <option value="AUD_USD">AUD/USD</option>
+                                    <option value="USD_CAD">USD/CAD</option>
+                                    <option value="NZD_USD">NZD/USD</option>
+                                    <option value="EUR_GBP">EUR/GBP</option>
+                                    <option value="EUR_JPY">EUR/JPY</option>
+                                    <option value="GBP_JPY">GBP/JPY</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="type-filter" class="form-label">Type</label>
+                                <select id="type-filter" class="form-select">
+                                    <option value="">All Types</option>
+                                    <option value="buy">Buy</option>
+                                    <option value="sell">Sell</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="result-filter" class="form-label">Result</label>
+                                <select id="result-filter" class="form-select">
+                                    <option value="">All Results</option>
+                                    <option value="win">Win</option>
+                                    <option value="loss">Loss</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="date-from" class="form-label">From Date</label>
+                                <input type="date" id="date-from" class="form-control">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="date-to" class="form-label">To Date</label>
+                                <input type="date" id="date-to" class="form-control">
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-filter"></i> Apply Filters
+                                </button>
+                                <button type="button" id="clear-filters-btn" class="btn btn-secondary ms-2">
+                                    <i class="fas fa-eraser"></i> Clear Filters
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Open Time</th>
+                                <th>Close Time</th>
+                                <th>Pair</th>
+                                <th>Type</th>
+                                <th>Size</th>
+                                <th>Entry</th>
+                                <th>Exit</th>
+                                <th>SL</th>
+                                <th>TP</th>
+                                <th>Swap</th>
+                                <th>P/L</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="trade-history-table">
+                            <tr>
+                                <td colspan="13" class="text-center">No trade history</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div id="trades-pagination" class="pagination-container">
+                            <!-- Pagination will be inserted here -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <div class="trades-summary">
+                            <span>Total Trades: <strong id="total-trades-count">0</strong></span>
+                            <span class="ms-3">Win Rate: <strong id="filtered-win-rate">0%</strong></span>
+                            <span class="ms-3">Total P/L: <strong id="filtered-total-pl">$0.00</strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Trade Detail Modal -->
+<div class="modal fade" id="trade-detail-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Trade Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table table-sm">
+                            <tr>
+                                <th>ID:</th>
+                                <td id="modal-trade-id"></td>
+                            </tr>
+                            <tr>
+                                <th>Pair:</th>
+                                <td id="modal-trade-pair"></td>
+                            </tr>
+                            <tr>
+                                <th>Type:</th>
+                                <td id="modal-trade-type"></td>
+                            </tr>
+                            <tr>
+                                <th>Size:</th>
+                                <td id="modal-trade-size"></td>
+                            </tr>
+                            <tr>
+                                <th>Open Time:</th>
+                                <td id="modal-trade-open-time"></td>
+                            </tr>
+                            <tr>
+                                <th>Close Time:</th>
+                                <td id="modal-trade-close-time"></td>
+                            </tr>
+                            <tr>
+                                <th>Duration:</th>
+                                <td id="modal-trade-duration"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Entry Price:</th>
+                                <td id="modal-trade-entry"></td>
+                            </tr>
+                            <tr>
+                                <th>Exit Price:</th>
+                                <td id="modal-trade-exit"></td>
+                            </tr>
+                            <tr>
+                                <th>Stop Loss:</th>
+                                <td id="modal-trade-sl"></td>
+                            </tr>
+                            <tr>
+                                <th>Take Profit:</th>
+                                <td id="modal-trade-tp"></td>
+                            </tr>
+                            <tr>
+                                <th>Swap:</th>
+                                <td id="modal-trade-swap"></td>
+                            </tr>
+                            <tr>
+                                <th>Commission:</th>
+                                <td id="modal-trade-commission"></td>
+                            </tr>
+                            <tr>
+                                <th>P/L:</th>
+                                <td id="modal-trade-pl"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <h6>Signal Information</h6>
+                        <table class="table table-sm">
+                            <tr>
+                                <th>Signal Type:</th>
+                                <td id="modal-signal-type"></td>
+                            </tr>
+                            <tr>
+                                <th>Signal Strength:</th>
+                                <td id="modal-signal-strength"></td>
+                            </tr>
+                            <tr>
+                                <th>Indicators:</th>
+                                <td id="modal-signal-indicators"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <h6>Trade Chart</h6>
+                        <div id="modal-trade-chart" style="height: 300px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a id="modal-view-chart-btn" href="#" class="btn btn-primary">View Full Chart</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/trades.js') }}"></script>
+{% endblock %}

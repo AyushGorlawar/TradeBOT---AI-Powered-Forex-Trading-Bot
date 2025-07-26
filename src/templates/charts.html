@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Charts - Forex Trading Bot{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h5 class="card-title mb-0" id="chart-title">EUR/USD - H1</h5>
+                <button id="refresh-chart-btn" class="btn btn-sm btn-light">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <form id="chart-settings-form" class="row g-3">
+                            <div class="col-md-3">
+                                <label for="pair-select" class="form-label">Currency Pair</label>
+                                <select id="pair-select" class="form-select">
+                                    <option value="EUR_USD">EUR/USD</option>
+                                    <option value="GBP_USD">GBP/USD</option>
+                                    <option value="USD_JPY">USD/JPY</option>
+                                    <option value="USD_CHF">USD/CHF</option>
+                                    <option value="AUD_USD">AUD/USD</option>
+                                    <option value="USD_CAD">USD/CAD</option>
+                                    <option value="NZD_USD">NZD/USD</option>
+                                    <option value="EUR_GBP">EUR/GBP</option>
+                                    <option value="EUR_JPY">EUR/JPY</option>
+                                    <option value="GBP_JPY">GBP/JPY</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label for="timeframe-select" class="form-label">Timeframe</label>
+                                <select id="timeframe-select" class="form-select">
+                                    <option value="M1">1 Minute</option>
+                                    <option value="M5">5 Minutes</option>
+                                    <option value="M15">15 Minutes</option>
+                                    <option value="M30">30 Minutes</option>
+                                    <option value="H1" selected>1 Hour</option>
+                                    <option value="H4">4 Hours</option>
+                                    <option value="D">Daily</option>
+                                    <option value="W">Weekly</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary me-2">
+                                    <i class="fas fa-filter"></i> Apply
+                                </button>
+                                <div class="form-check form-check-inline ms-3">
+                                    <input class="form-check-input" type="checkbox" id="show-signals-check" checked>
+                                    <label class="form-check-label" for="show-signals-check">Show Signals</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="show-trades-check" checked>
+                                    <label class="form-check-label" for="show-trades-check">Show Trades</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <div class="indicator-toggles">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="sma-check" value="sma">
+                                <label class="form-check-label" for="sma-check">SMA</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="ema-check" value="ema">
+                                <label class="form-check-label" for="ema-check">EMA</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="rsi-check" value="rsi">
+                                <label class="form-check-label" for="rsi-check">RSI</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="macd-check" value="macd,macd_signal,macd_hist">
+                                <label class="form-check-label" for="macd-check">MACD</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="bb-check" value="bb_upper,bb_middle,bb_lower">
+                                <label class="form-check-label" for="bb-check">Bollinger Bands</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="stoch-check" value="stoch_k,stoch_d">
+                                <label class="form-check-label" for="stoch-check">Stochastic</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="atr-check" value="atr">
+                                <label class="form-check-label" for="atr-check">ATR</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="adx-check" value="adx,di_plus,di_minus">
+                                <label class="form-check-label" for="adx-check">ADX</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="price-chart" style="height: 600px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+{% endblock %}
